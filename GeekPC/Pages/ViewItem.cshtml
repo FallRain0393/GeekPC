@@ -2,26 +2,70 @@
 @model GeekPC.Pages.ViewItemModel
 @{
 }
-
-<h1>вот так вот выводится данные модельки @Model.Item.Category</h1>
-<div id="carouselExampleControls" class="carousel_product carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel_item_product carousel-item active">
-            <img src="@($"data:image/png;base64, {Model.Item?.Images[0]?.FileData ?? string.Empty}")" alt="">
-        </div>
-        @foreach (var image in @Model.Item.Images.Skip(1).ToList())
-        {
-            <div class="carousel_item_product carousel-item">
-                <img src="@($"data:image/png;base64, {image.FileData ?? string.Empty}")" class="d-block w-100" alt="...">
+<section class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-mb-12 col-sm-12">
+                    <div id="carouselExampleControls" class="carousel_product carousel carousel-dark slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel_item_product carousel-item active">
+                                <img src="@($"data:image/png;base64, {Model.Item?.Images[0]?.FileData ?? string.Empty}")" alt="">
+                            </div>
+                                @foreach (var image in @Model.Item.Images.Skip(1).ToList())
+                                {
+                                    <div class="carousel_item_product carousel-item">
+                                        <img src="@($"data:image/png;base64, {image.FileData ?? string.Empty}")" class="d-block w-100" alt="...">
+                                    </div>
+                                }
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+                    <div class="col-lg-5 col-mb-12 col-sm-12 d-flex flex-wrap flex-column justify-content-around">
+                        <div class="breadcrumb">
+                            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a asp-page="/Index">GeekPC</a></li>
+                                    <li class="breadcrumb-item"><a asp-page="/Catalog">Каталог</a></li>
+                                    <li class="breadcrumb-item"><a asp-page="/ViewItem">@Model.Item.Category</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@Model.Item.Name</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="product-name d-flex justify-content-center align-self-start">
+                            <h1 style="font-weight:700;">@Model.Item.Name</h1>
+                        </div>
+                        <div class="product-reviews d-flex justify-content-start align-self-start">
+                            <a class="fs-2 fw-bold text-secondary"  href="#review">0 Отзывов</a>
+                        </div>
+                        <div class="product-button d-flex align-items-end">
+                            <a class="btn btn-light btn-outline-success btn-primary btn-lg" href="#" role="button">@Model.Item.Price Добавить в корзину</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-mb-12 col-sm-12">
+                        <article class="article text-component">
+                            <p>&nbsp;</p>
+                            <p>&nbsp;</p>
+                            <h2>Описание</h2>
+                                <span style="font-weight: 600;">@Model.Item.Description</span>
+                            <p>&nbsp;</p>  
+                        </article>
+                    </div>
             </div>
-        }
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+        </div>
+        <div class="reviews_content">
+              
+              <h2 class="separator d-flex justify-content-center" id="review">
+                <hr size=5px width=640px align="left">
+                <span>Отзывы</span>
+                <hr size=5px width=640px align="right">
+              </h2>
+            </div> 
+</section>
