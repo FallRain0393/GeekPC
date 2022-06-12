@@ -1,0 +1,54 @@
+﻿@page
+@model GeekPC.Pages.CatalogModel
+
+@{
+    ViewData["Title"] = "Каталог";
+}
+<section class="main-content">
+<div class="container">
+       <div class="row justify-content-start">
+            <div class="col-lg-4 col-mb-12 col-sm-12">
+              <div class="list-group">
+                    <a asp-page="Catalog" class="list-group-item list-group-item-action active" aria-current="true">
+                  Каталог
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">Клавиатуры</a>
+                <a href="#" class="list-group-item list-group-item-action">Мыши</a>
+                <a href="#" class="list-group-item list-group-item-action">Коврики</a>
+                <a href="#" class="list-group-item list-group-item-action">Процессоры</a>
+                <a href="#" class="list-group-item list-group-item-action">Материнские платы</a>
+                <a href="#" class="list-group-item list-group-item-action">Видеокарты</a>
+                </div>
+            </div>   
+            @foreach (var item in Model.Item)
+            {
+                <div class="col-lg-4 col-mb-6 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-thumb">
+                            <a href="#"
+                                ><img
+                                src="@($"data:image/png;base64, {item.FileData}")"
+                                alt=""
+                            /></a>
+                        </div>
+                     <div class="product-details">
+                         <h4><a href="#">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                         <p>@Html.DisplayFor(modelItem => item.Descr)</p>
+                          <div
+                              class="product-bottom-details d-flex justify-content-between"
+                          >
+                              <div class="product-price">
+                                  @Html.DisplayFor(modelItem => item.Price)
+                              </div>
+                              <div class="product-links">
+                                  <a href="#"><i class="fas fa-shopping-cart"></i></a>               
+                              </div>
+                              </div>
+                          </div>
+                     </div>
+                </div>
+            }
+            </div>
+        
+</div>
+</section>
