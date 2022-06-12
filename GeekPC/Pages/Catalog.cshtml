@@ -9,15 +9,15 @@
         <div class="row justify-content-start">
             <div class="col-lg-4 col-mb-12 col-sm-12">
                 <div class="list-group">
-                    <a asp-page="Catalog" class="list-group-item list-group-item-action active" aria-current="true">
-                        Каталог
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Клавиатуры</a>
-                    <a href="#" class="list-group-item list-group-item-action">Мыши</a>
-                    <a href="#" class="list-group-item list-group-item-action">Коврики</a>
-                    <a href="#" class="list-group-item list-group-item-action">Процессоры</a>
-                    <a href="#" class="list-group-item list-group-item-action">Материнские платы</a>
-                    <a href="#" class="list-group-item list-group-item-action">Видеокарты</a>
+                    <a asp-page="/Catalog" class="list-group-item list-group-item-action active" aria-current="true">
+                  Каталог
+                </a>
+                <a href="keyboards.html" class="list-group-item list-group-item-action">Клавиатуры</a>
+                <a href="mouse.html" class="list-group-item list-group-item-action">Мыши</a>
+                <a href="mousepads.html" class="list-group-item list-group-item-action">Коврики</a>
+                <a href="CPU.html" class="list-group-item list-group-item-action">Процессоры</a>
+                <a href="motherboards.html" class="list-group-item list-group-item-action">Материнские платы</a>
+                <a href="videocards.html" class="list-group-item list-group-item-action">Видеокарты</a>            
                 </div>
             </div>
             @foreach (var item in Model.Item)

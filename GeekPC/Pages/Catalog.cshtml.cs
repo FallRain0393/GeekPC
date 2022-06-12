@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
 using GeekPC.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GeekPC.Pages
 {
@@ -20,10 +21,18 @@ namespace GeekPC.Pages
         }
 
         public IList<Item> Item { get;set; }
+        public string SearchString { get; set; }
+        public SelectList Category { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ItemName { get; set; }
 
         public async Task OnGetAsync()
         {
+            
+            
             Item = await _context.Items.Include(t => t.Images).ToListAsync();
+           
+
         }
     }
 }
