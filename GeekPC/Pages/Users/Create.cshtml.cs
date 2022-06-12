@@ -12,9 +12,9 @@ namespace GeekPC.Pages.Users
 {
     public class CreateModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCUserContext _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(GeekPC.Data.GeekPCUserContext context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }
@@ -35,7 +35,7 @@ namespace GeekPC.Pages.Users
                 return Page();
             }
 
-            _context.Contact.Add(Contact);
+            _context.Contacts.Add(Contact);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

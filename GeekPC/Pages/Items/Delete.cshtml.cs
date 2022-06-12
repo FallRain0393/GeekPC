@@ -7,14 +7,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
 using GeekPC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekPC.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public DeleteModel(GeekPC.Data.GeekPCItemContext context)
+        public DeleteModel(AppDbContext context)
         {
             _context = context;
         }
@@ -29,7 +31,7 @@ namespace GeekPC.Pages.Items
                 return NotFound();
             }
 
-            Item = await _context.Item.FirstOrDefaultAsync(m => m.ID == id);
+            Item = await _context.Items.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Item == null)
             {
@@ -45,11 +47,11 @@ namespace GeekPC.Pages.Items
                 return NotFound();
             }
 
-            Item = await _context.Item.FindAsync(id);
+            Item = await _context.Items.FindAsync(id);
 
             if (Item != null)
             {
-                _context.Item.Remove(Item);
+                _context.Items.Remove(Item);
                 await _context.SaveChangesAsync();
             }
 

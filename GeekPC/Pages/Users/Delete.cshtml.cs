@@ -12,9 +12,9 @@ namespace GeekPC.Pages.Users
 {
     public class DeleteModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCUserContext _context;
+        private readonly AppDbContext _context;
 
-        public DeleteModel(GeekPC.Data.GeekPCUserContext context)
+        public DeleteModel(AppDbContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace GeekPC.Pages.Users
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FirstOrDefaultAsync(m => m.ContactId == id);
+            Contact = await _context.Contacts.FirstOrDefaultAsync(m => m.ContactId == id);
 
             if (Contact == null)
             {
@@ -45,11 +45,11 @@ namespace GeekPC.Pages.Users
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FindAsync(id);
+            Contact = await _context.Contacts.FindAsync(id);
 
             if (Contact != null)
             {
-                _context.Contact.Remove(Contact);
+                _context.Contacts.Remove(Contact);
                 await _context.SaveChangesAsync();
             }
 

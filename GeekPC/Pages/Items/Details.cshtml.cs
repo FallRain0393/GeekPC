@@ -7,14 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
 using GeekPC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekPC.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
+
     public class DetailsModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public DetailsModel(GeekPC.Data.GeekPCItemContext context)
+        public DetailsModel(AppDbContext context)
         {
             _context = context;
         }
@@ -28,7 +31,7 @@ namespace GeekPC.Pages.Items
                 return NotFound();
             }
 
-            Item = await _context.Item.FirstOrDefaultAsync(m => m.ID == id);
+            Item = await _context.Items.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Item == null)
             {

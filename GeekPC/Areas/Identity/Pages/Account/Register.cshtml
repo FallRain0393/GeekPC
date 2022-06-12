@@ -1,0 +1,79 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <h1 class="h3 mb-3 font-weight-normal text-center">Регистрация</h1>
+            <div class=mt-1>
+                <label asp-for="Input.FirstName" class="sr-only">Имя</label>
+                <input asp-for="Input.FirstName" type="text" class="form-control" placeholder="Имя" required="" autofocus="">
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class=mt-1>
+                <label asp-for="Input.LastName" class="sr-only">Фамилия</label>
+                <input asp-for="Input.LastName" type="text" class="form-control" placeholder="Фамилия" required="" autofocus="">
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class=mt-1>
+                <label asp-for="Input.Email" class="sr-only">Адрес эл. почты</label>
+                <input asp-for="Input.Email" type="email" class="form-control" placeholder="Адрес эл. почты" required="" autofocus="">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class=mt-1>
+                <label asp-for="Input.Password" class="sr-only">Пароль</label>
+                <input asp-for="Input.Password" type="password" class="form-control" placeholder="Пароль" required="">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class=mt-1>
+                <label asp-for="Input.ConfirmPassword" class="sr-only">Повторите пароль</label>
+                <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Повторите пароль" required="">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

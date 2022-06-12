@@ -6,19 +6,14 @@
     <title>@ViewData["Title"] - GeekPC</title>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" 
-      rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-      crossorigin="anonymous"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+          crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- Main CSS -->
@@ -27,200 +22,177 @@
 <body>
     <!-- Header -->
     <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #fff">
-      
-      <div class="container-fluid">
-        <a class="navbar-brand" asp-page="/Index">GeekPC</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 top-menu">
-            <li class="nav-item">
-              <a class="nav-link" asp-page="/Catalog">Каталог</a>
-            </li>
-          </ul>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #fff">
 
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-              <a class="nav-link" asp-page="/Items/Index">Администратор</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                href="#"
-                ><i class="far fa-user"></i
-              ></a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="pages/sing/sign-up.html">Регистрация</a></li>
-                <li><a class="dropdown-item" href="pages/sing/sign-in.html">Авторизация</a></li>
-              </ul>
-            </li>
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-page="/Index">GeekPC</a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 top-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Catalog">Каталог</a>
+                        </li>
+                    </ul>
 
-            <li class="nav-item">              
-              <a
-                class="nav-link"
-                href="pages/checkout/checkout.html"
-                data-bs-toggle="modal"
-                data-bs-target="#modal-cart"
-              >
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-              <div
-                class="modal fade"
-                id="modal-cart"
-                tabindex="0"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
-                    <div class="modal-header bg-secondary bg-dark text-black">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Корзина
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                            </td>
-                            <td>Название</td>
-                            <td>Цена</td>                   
-                            <td>Кол-во</td>                        
-                          </tr>
-                          <tr>
-                            <td>
-                              <img
-                                src="img/products/Keyboards/leopold_fc750r_pd_ash_yellow/01.jpg"
-                                alt=""
-                              />
-                            </td>
-                            <td><a href="pages/products/catalog/keyboards/leopold_fc_750r_pd_ash_yellow.html">Leopold FC 750R</a></td>
-                            <td><div class="product-price">12990 Р</div></td>                        
-                            <td>1</td>                          
-                          </tr>
-                         <tr>
-                            <td>
-                              <img
-                                src="img/products/Keyboards/leopold_fc650mds_pd_gray/01.jpg"
-                                alt=""
-                              />
-                            </td>
-                            <td><a href="pages/products/catalog/keyboards/leopold_fc_650mds_pd_gray.html">Leopold FC650mds PD Gray</a></td>
-                            <td><div class="product-price">9990 Р</div></td>                        
-                            <td>1</td>                           
-                          </tr>
-                          <tr>
-                            <td>
-                              <img
-                                src="img/products/Mousepads/varmilo_koi_daisy/01.jpg"
-                                alt=""
-                              />
-                            </td>
-                            <td><a href="pages/products/catalog/mousepads/varmilo_koi_daisy.html">Varmilo Koi Daisy</a></td>
-                            <td><div class="product-price">1990 Р</div></td>                           
-                            <td>1</td>                          
-                          </tr> 
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-light btn-outline-danger btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Закрыть
-                      </button>
-                      <a class="btn btn-light btn-outline-success btn-primary" href="pages/checkout/checkout.html" role="button">Купить</a>
-                     
-                    </div>
-                  </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Items/Index">Администратор</a>
+                            </li>
+                        }
+
+                        <partial name="_LoginPartial" />
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="pages/checkout/checkout.html"
+                               data-bs-toggle="modal"
+                               data-bs-target="#modal-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            <div class="modal fade"
+                                 id="modal-cart"
+                                 tabindex="0"
+                                 aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-secondary bg-dark text-black">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Корзина
+                                            </h5>
+                                            <button type="button"
+                                                    class="btn-close btn-close-white"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>Название</td>
+                                                        <td>Цена</td>
+                                                        <td>Кол-во</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="img/products/Keyboards/leopold_fc750r_pd_ash_yellow/01.jpg"
+                                                                 alt="" />
+                                                        </td>
+                                                        <td><a href="pages/products/catalog/keyboards/leopold_fc_750r_pd_ash_yellow.html">Leopold FC 750R</a></td>
+                                                        <td><div class="product-price">12990 Р</div></td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="img/products/Keyboards/leopold_fc650mds_pd_gray/01.jpg"
+                                                                 alt="" />
+                                                        </td>
+                                                        <td><a href="pages/products/catalog/keyboards/leopold_fc_650mds_pd_gray.html">Leopold FC650mds PD Gray</a></td>
+                                                        <td><div class="product-price">9990 Р</div></td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="img/products/Mousepads/varmilo_koi_daisy/01.jpg"
+                                                                 alt="" />
+                                                        </td>
+                                                        <td><a href="pages/products/catalog/mousepads/varmilo_koi_daisy.html">Varmilo Koi Daisy</a></td>
+                                                        <td><div class="product-price">1990 Р</div></td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"
+                                                    class="btn btn-light btn-outline-danger btn-secondary"
+                                                    data-bs-dismiss="modal">
+                                                Закрыть
+                                            </button>
+                                            <a class="btn btn-light btn-outline-success btn-primary" href="pages/checkout/checkout.html" role="button">Купить</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+            </div>
+        </nav>
+    </header>
     <div class="wrapper">
-      <div class="content">
+        <div class="content">
             @RenderBody()
         </div>
-    
 
-    <!-- Footer -->
-  <footer>
-      <section class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-6">
-              <h4>Информация</h4>
-              <ul class="list-unstyled">
-                <li><a asp-page="/Index">Главная</a></li>
-                <li><a href="pages/catalog.html">Каталог</a></li>
-                <li><a href="#">О магазине</a></li>
-                <li><a href="pages/delivery.html">Оплата и доставка</a></li>
-                <li><a href="pages/contacts.html">Контакты</a></li>
-              </ul>
-            </div>
 
-            <div class="col-md-3 col-6">
-              <h4>Время работы</h4>
-              <ul class="list-unstyled">
-                <li>г. Набережные Челны, ул. Шамиля Усманова, 89</li>
-                <li>пн-вс: 9:00 - 18:00</li>
-                <li>без перерыва</li>
-              </ul>
-            </div>
+        <!-- Footer -->
+        <footer>
+            <section class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <h4>Информация</h4>
+                            <ul class="list-unstyled">
+                                <li><a asp-page="/Index">Главная</a></li>
+                                <li><a href="pages/catalog.html">Каталог</a></li>
+                                <li><a href="#">О магазине</a></li>
+                                <li><a href="pages/delivery.html">Оплата и доставка</a></li>
+                                <li><a href="pages/contacts.html">Контакты</a></li>
+                            </ul>
+                        </div>
 
-            <div class="col-md-3 col-6">
-              <h4>Контакты</h4>
-              <ul class="list-unstyled">
-                <li><a href="tel:89656292302">8-965-629-23-02</a></li>
-              </ul>
-            </div>
+                        <div class="col-md-3 col-6">
+                            <h4>Время работы</h4>
+                            <ul class="list-unstyled">
+                                <li>г. Набережные Челны, ул. Шамиля Усманова, 89</li>
+                                <li>пн-вс: 9:00 - 18:00</li>
+                                <li>без перерыва</li>
+                            </ul>
+                        </div>
 
-            <div class="col-md-3 col-6">
-              <h4>Мы в сети</h4>
-              <div class="footer-icons">
-                <a href="https://www.facebook.com/"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a href="https://www.youtube.com/"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-                <a href="https://www.instagram.com/"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </footer>
+                        <div class="col-md-3 col-6">
+                            <h4>Контакты</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="tel:89656292302">8-965-629-23-02</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 col-6">
+                            <h4>Мы в сети</h4>
+                            <div class="footer-icons">
+                                <a href="https://www.facebook.com/">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.youtube.com/">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://www.instagram.com/">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

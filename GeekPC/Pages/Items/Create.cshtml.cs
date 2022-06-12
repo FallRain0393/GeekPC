@@ -8,14 +8,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using GeekPC.Data;
 using GeekPC.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekPC.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
+
     public class CreateModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(GeekPC.Data.GeekPCItemContext context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }
@@ -41,7 +44,7 @@ namespace GeekPC.Pages.Items
 
             Item.FileData = Convert.ToBase64String(bytes);
 
-            _context.Item.Add(Item);
+            _context.Items.Add(Item);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

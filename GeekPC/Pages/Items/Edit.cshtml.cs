@@ -9,14 +9,17 @@ using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
 using GeekPC.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekPC.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
+
     public class EditModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public EditModel(GeekPC.Data.GeekPCItemContext context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
         }
@@ -31,7 +34,7 @@ namespace GeekPC.Pages.Items
                 return NotFound();
             }
 
-            Item = await _context.Item.FirstOrDefaultAsync(m => m.ID == id);
+            Item = await _context.Items.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Item == null)
             {
@@ -77,7 +80,7 @@ namespace GeekPC.Pages.Items
 
         private bool ItemExists(int id)
         {
-            return _context.Item.Any(e => e.ID == id);
+            return _context.Items.Any(e => e.ID == id);
         }
     }
 }

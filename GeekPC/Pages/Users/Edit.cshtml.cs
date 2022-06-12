@@ -13,9 +13,9 @@ namespace GeekPC.Pages.Users
 {
     public class EditModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCUserContext _context;
+        private readonly AppDbContext _context;
 
-        public EditModel(GeekPC.Data.GeekPCUserContext context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace GeekPC.Pages.Users
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FirstOrDefaultAsync(m => m.ContactId == id);
+            Contact = await _context.Contacts.FirstOrDefaultAsync(m => m.ContactId == id);
 
             if (Contact == null)
             {
@@ -71,7 +71,7 @@ namespace GeekPC.Pages.Users
 
         private bool ContactExists(int id)
         {
-            return _context.Contact.Any(e => e.ContactId == id);
+            return _context.Contacts.Any(e => e.ContactId == id);
         }
     }
 }

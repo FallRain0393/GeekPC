@@ -12,9 +12,9 @@ namespace GeekPC.Pages.Users
 {
     public class DetailsModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCUserContext _context;
+        private readonly AppDbContext _context;
 
-        public DetailsModel(GeekPC.Data.GeekPCUserContext context)
+        public DetailsModel(AppDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace GeekPC.Pages.Users
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FirstOrDefaultAsync(m => m.ContactId == id);
+            Contact = await _context.Contacts.FirstOrDefaultAsync(m => m.ContactId == id);
 
             if (Contact == null)
             {

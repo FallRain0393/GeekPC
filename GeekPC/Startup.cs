@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace GeekPC
 {
@@ -25,13 +26,31 @@ namespace GeekPC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlite("Filename=GeekPC_app.db"));
+
+
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+                options.User.AllowedUserNameCharacters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ ";
+
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            });
+
+
+
+            services.AddControllersWithViews();
             services.AddRazorPages();
-
-            services.AddDbContext<GeekPCItemContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GeekPCItemContext")));
-
-            services.AddDbContext<GeekPCUserContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GeekPCUserContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +72,7 @@ namespace GeekPC
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -8,14 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using GeekPC.Data;
 using GeekPC.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeekPC.Pages.Items
 {
+    [Authorize(Roles = "Admin")]
+
     public class IndexModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public IndexModel(GeekPC.Data.GeekPCItemContext context)
+        public IndexModel(AppDbContext context)
         {
             _context = context;
         }
@@ -30,11 +33,11 @@ namespace GeekPC.Pages.Items
         public async Task OnGetAsync()
         {
             // Use LINQ to get list of genres.
-            IQueryable<string> genreQuery = from m in _context.Item
+            IQueryable<string> genreQuery = from m in _context.Items
                                             orderby m.Category
                                             select m.Category;
 
-            var items = from m in _context.Item
+            var items = from m in _context.Items
                          select m;
 
             if (!string.IsNullOrEmpty(SearchString))

@@ -12,9 +12,9 @@ namespace GeekPC.Pages
 {
     public class CatalogModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCItemContext _context;
+        private readonly AppDbContext _context;
 
-        public CatalogModel(GeekPC.Data.GeekPCItemContext context)
+        public CatalogModel(AppDbContext context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace GeekPC.Pages
 
         public async Task OnGetAsync()
         {
-            Item = await _context.Item.ToListAsync();
+            Item = await _context.Items.ToListAsync();
         }
     }
 }

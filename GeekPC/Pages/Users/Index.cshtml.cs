@@ -12,9 +12,9 @@ namespace GeekPC.Pages.Users
 {
     public class IndexModel : PageModel
     {
-        private readonly GeekPC.Data.GeekPCUserContext _context;
+        private readonly AppDbContext _context;
 
-        public IndexModel(GeekPC.Data.GeekPCUserContext context)
+        public IndexModel(AppDbContext context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace GeekPC.Pages.Users
 
         public async Task OnGetAsync()
         {
-            Contact = await _context.Contact.ToListAsync();
+            Contact = await _context.Contacts.ToListAsync();
         }
     }
 }
