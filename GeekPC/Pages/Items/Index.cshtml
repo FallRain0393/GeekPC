@@ -10,7 +10,7 @@
 <h1>Главная</h1>
 
 <p>
-    <a asp-page="Create">Создать</a>
+    <a asp-page="Create" class="btn btn-success">Создать</a>
 </p>
 
 <form>
@@ -19,7 +19,7 @@
             <option value="">Все</option>
         </select>
         Название: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Поиск" />
+        <input type="submit" value="Поиск" class="btn btn-dark" />
     </p>
 </form>
 
@@ -43,10 +43,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Item[0].DatePublication)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].DatePublication)
-            </th>
+            </th>          
             <th></th>
         </tr>
     </thead>
@@ -72,9 +69,9 @@
                 @Html.DisplayFor(modelItem => item.DatePublication)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Редактировать</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Детали</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Удаление</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Редактировать</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-info">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Удаление</a>
             </td>
         </tr>
 }
