@@ -47,7 +47,7 @@ namespace GeekPC.Pages.Items
                 return NotFound();
             }
 
-            Item = await _context.Items.FindAsync(id);
+            Item = await _context.Items.Include(t => t.Images).FirstAsync(t => t.ID == id);
 
             if (Item != null)
             {

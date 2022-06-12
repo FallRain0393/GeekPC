@@ -11,9 +11,5 @@ namespace GeekPC.Data
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Item> Items { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
     }
 }

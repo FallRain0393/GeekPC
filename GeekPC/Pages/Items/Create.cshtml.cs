@@ -27,7 +27,7 @@ namespace GeekPC.Pages.Items
         {
             return Page();
         }
-        [BindProperty] public IFormFile Upload { get; set; }
+        [BindProperty] public IFormFile[] Uploads { get; set; }
         [BindProperty]
         public Item Item { get; set; }
 
@@ -38,16 +38,22 @@ namespace GeekPC.Pages.Items
             {
                 return Page();
             }
-            using var fileStream = Upload.OpenReadStream();
-            byte[] bytes = new byte[Upload.Length];
-            fileStream.Read(bytes, 0, (int)Upload.Length);
 
-            Item.FileData = Convert.ToBase64String(bytes);
+            Item.Images = new List<Image>();
+            foreach (var Upload in Uploads)
+            {
+                using var fileStream = Upload.OpenReadStream();
+                byte[] bytes = new byte[Upload.Length];
+                fileStream.Read(bytes, 0, (int)Upload.Length);
+                var fileData = Convert.ToBase64String(bytes);
+                await fileStream.DisposeAsync();
 
+                Item.Images.Add(new Image() { FileData = fileData });
+            }
             _context.Items.Add(Item);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
+
         }
     }
 }

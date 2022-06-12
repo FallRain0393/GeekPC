@@ -23,7 +23,7 @@ namespace GeekPC.Pages.Items
         {
             _context = context;
         }
-        [BindProperty] public IFormFile Upload { get; set; }
+        [BindProperty] public IFormFile[] Uploads { get; set; }
         [BindProperty]
         public Item Item { get; set; }
 
@@ -51,11 +51,16 @@ namespace GeekPC.Pages.Items
             {
                 return Page();
             }
-            using var fileStream = Upload.OpenReadStream();
-            byte[] bytes = new byte[Upload.Length];
-            fileStream.Read(bytes, 0, (int)Upload.Length);
 
-            Item.FileData = Convert.ToBase64String(bytes);
+            Item.Images = new List<Image>();
+            foreach (var Upload in Uploads)
+            {
+                using var fileStream = Upload.OpenReadStream();
+                byte[] bytes = new byte[Uploads.Length];
+                fileStream.Read(bytes, 0, (int)Uploads.Length);
+
+                Item.Images.Add(new Image() { FileData = Convert.ToBase64String(bytes) });
+            }
 
             _context.Attach(Item).State = EntityState.Modified;
 

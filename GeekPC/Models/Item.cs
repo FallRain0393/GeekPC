@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,6 +24,6 @@ namespace GeekPC.Models
         [Display(Name = "Дата публикации")]
         [DataType(DataType.Date)]
         public DateTime DatePublication { get; set; }
-        public string FileData { get; set; }
+        public List<Image> Images { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace GeekPC.Pages
 
         public async Task OnGetAsync()
         {
-            Item = await _context.Items.ToListAsync();
+            Item = await _context.Items.Include(t => t.Images).ToListAsync();
         }
     }
 }
