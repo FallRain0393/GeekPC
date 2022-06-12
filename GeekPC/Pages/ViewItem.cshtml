@@ -4,3 +4,24 @@
 }
 
 <h1>вот так вот выводится данные модельки @Model.Item.Category</h1>
+<div id="carouselExampleControls" class="carousel_product carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel_item_product carousel-item active">
+            <img src="@($"data:image/png;base64, {Model.Item?.Images[0]?.FileData ?? string.Empty}")" alt="">
+        </div>
+        @foreach (var image in @Model.Item.Images.Skip(1).ToList())
+        {
+            <div class="carousel_item_product carousel-item">
+                <img src="@($"data:image/png;base64, {image.FileData ?? string.Empty}")" class="d-block w-100" alt="...">
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
