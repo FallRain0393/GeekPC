@@ -7,19 +7,19 @@
 <main class="form-signin">    
         <section class="main-content">
             <div class="container">
+                <h1 style="text-align:center">@ViewData["Title"]</h1>
                 <div class="row justify-content-center">
                     <div class="col-4">
             <form class="form-signin" id="account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <h1 class="h3 mb-3 font-weight-normal text-center">Вход</h1>
-                    <div>
+                    <div class="mt-1">
                         <label asp-for="Input.Email" class="sr-only">Адрес эл. почты</label>
-                        <input asp-for="Input.Email" type="email" class="form-control" placeholder="Адрес эл. почты" required="" autofocus="">
+                        <input asp-for="Input.Email" type="email" class="form-control form-control-lg" placeholder="Адрес эл. почты" required="" autofocus="">
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
-                    <div>
+                    <div class="mt-1">
                         <label asp-for="Input.Password" class="sr-only">Пароль</label>
-                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Пароль" required="">
+                        <input asp-for="Input.Password" type="password" class="form-control form-control-lg" placeholder="Пароль" required="">
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
 
                     </div>
@@ -30,15 +30,16 @@
                         </label>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="submit">Войти</button>
+                        <button class="btn btn-lg btn-primary" type="submit">Войти</button>
                     </div>
                 </form>
                 </div>
                 </div>
                 </div>
+                @section Scripts {
+                <partial name="_ValidationScriptsPartial" />
+                }
         </section>
 </main>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+

@@ -23,7 +23,6 @@
     <!-- Header -->
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #fff">
-
             <div class="container-fluid">
                 <a class="navbar-brand" asp-page="/Index">GeekPC</a>
                 <button class="navbar-toggler"
@@ -41,7 +40,6 @@
                             <a class="nav-link" asp-page="/Catalog">Каталог</a>
                         </li>
                     </ul>
-
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @if (User.IsInRole("Admin"))
                         {
@@ -49,9 +47,7 @@
                                 <a class="nav-link" asp-page="/Items/Index">Администратор</a>
                             </li>
                         }
-
                         <partial name="_LoginPartial" />
-
                         <li class="nav-item">
                             <a class="nav-link"
                                href="pages/checkout/checkout.html"
@@ -128,7 +124,6 @@
                                 </div>
                             </div>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                         </li>
@@ -141,8 +136,6 @@
         <div class="content">
             @RenderBody()
         </div>
-
-
         <!-- Footer -->
         <footer>
             <section class="footer">
@@ -154,11 +147,10 @@
                                 <li><a asp-page="/Index">Главная</a></li>
                                 <li><a asp-page="/Catalog">Каталог</a></li>
                                 <li><a href="#">О магазине</a></li>
-                                <li><a href="pages/delivery.html">Оплата и доставка</a></li>
-                                <li><a href="pages/contacts.html">Контакты</a></li>
+                                <li><a asp-page="/Delivery">Оплата и доставка</a></li>
+                                <li><a asp-page="/Contacts">Контакты</a></li>
                             </ul>
                         </div>
-
                         <div class="col-md-3 col-6">
                             <h4>Время работы</h4>
                             <ul class="list-unstyled">
@@ -167,14 +159,12 @@
                                 <li>без перерыва</li>
                             </ul>
                         </div>
-
                         <div class="col-md-3 col-6">
                             <h4>Контакты</h4>
                             <ul class="list-unstyled">
                                 <li><a href="tel:89656292302">8-965-629-23-02</a></li>
                             </ul>
                         </div>
-
                         <div class="col-md-3 col-6">
                             <h4>Мы в сети</h4>
                             <div class="footer-icons">

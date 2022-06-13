@@ -1,0 +1,36 @@
+﻿@page
+@model GeekPC.Pages.ContactsModel
+@{
+    ViewData["Title"] = "Контакты";
+}
+
+<section class="main-content">
+    <div class="row justify-content-center">
+        <div class="col-10 contacts-1">
+            <h1>Форма для обратной связи</h1>
+            <br>
+        </div>
+    </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6 mb-3 contacts-2">
+                <div class="input-group mb-3">
+                     <input type="text" class="form-control" placeholder="Имя" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>    
+            <div class="col-lg-3 col-sm-6 mb-3 contacts-3">   
+                <div class="input-group mb-3">
+                    <input type="Email" class="form-control" placeholder="Почта" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">     
+            <div class="col-lg-6 col-sm-12 col-mb-3 contacts-4">
+                <div class="input-group">
+                    <textarea class="form-control" placeholder="Сообщение" aria-label="With textarea"></textarea>
+                </div>
+                <div class="button">
+                    <button type="button" class="btn btn-secondary btn-lg">Отправить</button>
+                </div>
+            </div>   
+        </div>                 
+</section>
