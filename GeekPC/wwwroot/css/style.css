@@ -89,7 +89,7 @@ img {
 /* Carousel */
 
 .my-carousel {
-  height: 40vw;
+  height: 32vw;
 }
 
 .carousel-inner {
@@ -101,7 +101,7 @@ img {
 .carousel-caption p,
 h5,
 h6 {
-  font-size: 3vw;
+  font-size: 2vw;
   color: #ffffff;
   text-shadow: 4px 4px 8px black;
 }
@@ -112,7 +112,7 @@ h6 {
 
 .main-content {
   padding-top: 3rem;
-  padding-bottom: 20rem;
+  padding-bottom: 18rem;
 }
 
 .modal-body img {
