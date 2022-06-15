@@ -1,0 +1,13 @@
+﻿@page
+@model GeekPC.Pages.CartModel
+@{
+    ViewData["Title"] = "Корзина";
+}
+
+@foreach (var cart in Model.Carts)
+{
+    <ul>
+        <li>Name @cart.Item.Name</li>
+        <li>Price @cart.Item.Price</li>
+    </ul>
+}

@@ -10,6 +10,6 @@ namespace GeekPC.Data
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Item> Items { get; set; }
-
+        public DbSet<Cart> Carts { get; set; }
     }
 }

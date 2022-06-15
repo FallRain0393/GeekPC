@@ -25,5 +25,6 @@ namespace GeekPC.Models
         [DataType(DataType.Date)]
         public DateTime DatePublication { get; set; }
         public List<Image> Images { get; set; }
+        public List<Cart> Carts { get; set; }
     }
 }

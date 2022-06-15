@@ -80,6 +80,28 @@ namespace GeekPC.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("GeekPC.Models.CartModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("GeekPC.Models.Contact", b =>
                 {
                     b.Property<int>("ContactId")
@@ -124,7 +146,7 @@ namespace GeekPC.Migrations
                     b.Property<string>("FileData")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ItemID")
+                    b.Property<int>("ItemID")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -297,11 +319,34 @@ namespace GeekPC.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("GeekPC.Models.CartModel", b =>
+                {
+                    b.HasOne("GeekPC.Models.Item", "Item")
+                        .WithMany("Carts")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GeekPC.Data.ApplicationUser", "User")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GeekPC.Models.Image", b =>
                 {
-                    b.HasOne("GeekPC.Models.Item", null)
+                    b.HasOne("GeekPC.Models.Item", "Item")
                         .WithMany("Images")
-                        .HasForeignKey("ItemID");
+                        .HasForeignKey("ItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -355,8 +400,15 @@ namespace GeekPC.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GeekPC.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("Carts");
+                });
+
             modelBuilder.Entity("GeekPC.Models.Item", b =>
                 {
+                    b.Navigation("Carts");
+
                     b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
