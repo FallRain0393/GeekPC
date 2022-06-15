@@ -19,11 +19,15 @@ namespace GeekPC.Pages
             _context = context;
         }
         public List<Cart> Carts { get; set; }
+        public IList<Item> Item { get; set; }
+
         public async Task OnGetAsync()
         {
             Carts = await _context.Carts.Include(t => t.Item)
                 .Where(t => t.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)) 
                 .ToListAsync();
+            Item = await _context.Items.Include(t => t.Images).ToListAsync();
+
         }
     }
 }
